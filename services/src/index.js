@@ -1,21 +1,21 @@
-require("dotenv").config();
+import "dotenv/config";
 
+import "./db/connect";
 import "./server";
-import mongoose from "mongoose";
 
-const mongoose = require("mongoose");
-mongoose.connect(process.env.DB_URL, { useNewUrlParser: true });
+import Manga from "./db/models/Manga";
 
-const mongooseSchema = new mongoose.Schema({
-  alias: String,
-  categories: [String],
-  hits: Number,
-  image: String,
-  status: Number,
-  title: String
+const manga = new Manga({
+  alias: "ouji-no-hakoniwa",
+  categories: [],
+  hits: 0,
+  _id: "5d742c6e719a1606d9325c29",
+  image: null,
+  status: 1,
+  title: "Ouji no Hakoniwa"
 });
 
-const Manga = mongoose.model("Manga", mongooseSchema);
-
-const managa = new Manga({ name: "Zildjian" });
-managa.save().then(() => console.log("meow"));
+manga.save(function(err, manga) {
+  if (err) return console.error(err);
+  console.log("Saved");
+});
