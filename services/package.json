@@ -1,0 +1,14 @@
+{
+  "name": "mangea-reader-services",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "watch": "babel-watch index.js"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/core": "^7.6.4",
+    "@babel/preset-env": "^7.6.3",
+    "babel-watch": "^7.0.0"
+  }
+}
