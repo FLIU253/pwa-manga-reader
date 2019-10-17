@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
+    "start:cron": "babel-node src/cron.js",
     "start:dev": "babel-node src/index.js",
     "watch": "babel-watch src/index.js"
   },
@@ -17,8 +18,10 @@
   "dependencies": {
     "apollo-server": "^2.9.6",
     "apollo-server-express": "^2.9.6",
+    "axios": "^0.19.0",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
-    "mongoose": "^5.7.5"
+    "mongoose": "^5.7.5",
+    "node-cron": "^2.0.3"
   }
 }

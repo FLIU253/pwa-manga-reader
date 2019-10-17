@@ -6,7 +6,8 @@ export const schema = new mongoose.Schema({
   hits: Number,
   image: String,
   status: Number,
-  title: String
+  title: String,
+  lastUpdated: Number
 });
 
 const Manga = mongoose.model("Manga", schema);
