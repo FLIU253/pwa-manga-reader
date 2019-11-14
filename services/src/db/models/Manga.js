@@ -1,6 +1,6 @@
-import mongoose from "mongoose";
+const mongoose = require("mongoose");
 
-export const schema = new mongoose.Schema({
+const schema = new mongoose.Schema({
   alias: String,
   categories: [String],
   hits: Number,
@@ -12,4 +12,4 @@ export const schema = new mongoose.Schema({
 
 const Manga = mongoose.model("Manga", schema);
 
-export default Manga;
+module.exports = Manga;

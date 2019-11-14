@@ -41,7 +41,7 @@ const seed = async () => {
 
   console.log(`mangas back, got ${mangas.length}`);
 
-  Manga.insertMany(mangas);
+  await Manga.insertMany(mangas);
 
   console.log("seeded");
 };

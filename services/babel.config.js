@@ -1,3 +1,4 @@
 module.exports = {
-  presets: ["@babel/env"]
+  presets: ["@babel/env"],
+  plugins: ["@babel/plugin-transform-runtime"]
 };
