@@ -7,8 +7,8 @@ const typeDefs = gql`
   type Chapter {
     id: ID!
     lastUpdated: Date!
-    number: Int!
-    title: String!
+    number: Float!
+    title: String
   }
 
   type Manga {
