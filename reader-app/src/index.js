@@ -1,4 +1,8 @@
 import React from "react";
 import { render } from "react-dom";
 
-render(<h1></h1>, document.getElementById("app"));
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.register("service-worker.js");
+}
+
+render(<h1>working</h1>, document.getElementById("app"));
