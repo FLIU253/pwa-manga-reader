@@ -26,7 +26,7 @@ const typeDefs = gql`
 
   type Query {
     manga(id: ID!): Manga!
-    mangas: [Manga!]!
+    mangas(searchTitle: String): [Manga!]!
   }
 `;
 
