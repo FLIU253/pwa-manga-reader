@@ -80,7 +80,7 @@ const options = dataSource
     </Option>
   ]);
 
-const Search = () => {
+const Search = ({ onChange }) => {
   return (
     <div className="certain-category-search-wrapper" style={{ width: 500 }}>
       <AutoComplete
@@ -93,6 +93,7 @@ const Search = () => {
         dataSource={options}
         placeholder="input here"
         optionLabelProp="value"
+        onChange={onChange}
       >
         <Input suffix={<Icon type="search" className="certain-category-icon" />} />
       </AutoComplete>

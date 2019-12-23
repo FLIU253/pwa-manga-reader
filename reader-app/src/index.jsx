@@ -2,10 +2,11 @@ import "antd/dist/antd.css";
 import React from "react";
 import { ApolloProvider } from "react-apollo";
 import { render } from "react-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 import graphqlClient from "./api/graphql";
 import "./global.less";
-import Search from "./antd/Search";
+import Home from "./pages/Home";
 
 // if ("serviceWorker" in navigator) {
 //   navigator.serviceWorker.register("service-worker.js");
@@ -14,16 +15,18 @@ import Search from "./antd/Search";
 const App = () => {
   return (
     <div className="main-container">
-      <div className="main-search-container">
-        <Search />
-      </div>
+      <Switch>
+        <Route component={Home} path="/" />
+      </Switch>
     </div>
   );
 };
 
 render(
   <ApolloProvider client={graphqlClient}>
-    <App />
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
   </ApolloProvider>,
   document.getElementById("app")
 );
