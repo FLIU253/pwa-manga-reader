@@ -7,7 +7,7 @@ import "./db/connect";
 
 const seed = async () => {
   const res = await fetchAllMangas("en");
-  const mangas = transformMangaEden(res.data.manga);
+  const mangas = res.data.manga;
 
   console.log(`mangas back, got ${mangas.length}`);
 

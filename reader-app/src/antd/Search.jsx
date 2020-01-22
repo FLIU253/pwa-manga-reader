@@ -80,7 +80,7 @@ const options = dataSource
     </Option>
   ]);
 
-const Search = ({ onChange }) => {
+const Search = ({ dataSource, onChange }) => {
   return (
     <div className="certain-category-search-wrapper" style={{ width: 500 }}>
       <AutoComplete
@@ -90,7 +90,7 @@ const Search = ({ onChange }) => {
         dropdownStyle={{ width: 300 }}
         size="large"
         style={{ width: "100%" }}
-        dataSource={options}
+        dataSource={dataSource}
         placeholder="input here"
         optionLabelProp="value"
         onChange={onChange}

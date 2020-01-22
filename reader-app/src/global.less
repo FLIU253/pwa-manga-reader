@@ -24,3 +24,24 @@ body {
     margin: 35vh auto 0;
   }
 }
+
+.home-search-option {
+  display: flex;
+  flex-flow: row nowrap;
+  font-size: 1rem;
+
+  & > &-title {
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  & > &-status {
+    font-size: 0.7em;
+    margin-left: auto;
+  }
+}
+
+.ant-tooltip-inner {
+  font-size: 0.6em;
+}

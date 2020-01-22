@@ -2,6 +2,12 @@ import { gql } from "apollo-server";
 
 // Construct a schema, using GraphQL schema language
 const typeDefs = gql`
+  enum MangaStatus {
+    COMPLETED
+    ONGOING
+    SUSPENDED
+  }
+
   scalar Date
 
   type Chapter {
@@ -16,6 +22,7 @@ const typeDefs = gql`
     info: MangaInfo!
     image: String
     lastUpdated: Date!
+    status: MangaStatus
     title: String!
   }
 
