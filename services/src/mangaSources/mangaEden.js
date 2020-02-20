@@ -41,7 +41,7 @@ const transformMangas = manga =>
         categories,
         hits,
         _id,
-        image,
+        image: IMAGE_CDN_BASE_URL + image,
         status,
         title,
         lastUpdated
