@@ -20,20 +20,23 @@ const query = gql`
   query($searchTitle: String!) {
     mangas(searchTitle: $searchTitle) {
       id
+      image
       title
       status
     }
   }
 `;
 
-const sanitiseTitle = title =>
-  title
-    .toLowerCase()
-    .replace(/[^a-z0-9]/g, "-")
-    .replace(/-{2,}/g, "-");
+// const sanitiseTitle = title =>
+//   title
+//     .toLowerCase()
+//     .replace(/[^a-z0-9]/g, "-")
+//     .replace(/-{2,}/g, "-");
 
 const Home = () => {
   const [searchQuery, setSearchQuery] = useState("");
+  const [selectedManga, setSelectedManga] = useState(null);
+
   const { data, loading } = useQuery(query, {
     skip: searchQuery.length < MIN_QUERY_LENGTH,
     variables: { searchTitle: searchQuery }
@@ -52,9 +55,10 @@ const Home = () => {
     data.mangas &&
     data.mangas.map(manga => (
       <AutoComplete.Option key={manga.id} value={manga.title}>
-        <Link
+        <span
           className="home-search-option"
-          to={`${manga.id}-${sanitiseTitle(manga.title)}`}
+          // to={`${manga.id}-${sanitiseTitle(manga.title)}`}
+          onClick={() => setSelectedManga(manga)}
         >
           <Tooltip title={manga.title} mouseEnterDelay={0.5} placement="topLeft">
             <div className="home-search-option-title" title={manga.title}>
@@ -67,13 +71,19 @@ const Home = () => {
           >
             {manga.status}
           </Tag>
-        </Link>
+        </span>
       </AutoComplete.Option>
     ));
 
   return (
     <div className="main-search-container">
       <Search dataSource={dataSource} onChange={handleChange} />
+
+      {selectedManga && (
+        <div>
+          <img src={selectedManga.image} />
+        </div>
+      )}
       {/* <pre>{JSON.stringify(data, null, 2)}</pre> */}
     </div>
   );
