@@ -12,9 +12,16 @@ const typeDefs = gql`
 
   type Chapter {
     id: ID!
+    images: [ChapterImage!]!
     lastUpdated: Date!
     number: Float!
     title: String
+  }
+
+  type ChapterImage {
+    height: Int!
+    width: Int!
+    url: String!
   }
 
   type Manga {

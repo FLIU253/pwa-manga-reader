@@ -16,7 +16,7 @@ const App = () => {
   return (
     <div className="main-container">
       <Switch>
-        <Route component={Manga} path="/:mangaId([a-z0-9]{24})-:mangaName([a-z-]+)" />
+        <Route component={Manga} path="/:mangaId([a-z0-9]{24})-:mangaName([a-z0-9-]+)" />
         <Route component={Home} path="/" />
       </Switch>
     </div>
