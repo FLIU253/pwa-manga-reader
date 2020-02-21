@@ -45,6 +45,49 @@ body {
   }
 }
 
+.manga-details-wrapper {
+  display: flex;
+  flex-flow: row nowrap;
+  margin: 1rem auto 0;
+  max-width: 500px;
+  width: 90vw;
+
+  > .manga-details-image {
+    flex: 0 auto;
+    max-width: 5rem;
+    max-height: 10rem;
+    object-fit: contain;
+  }
+
+  > .manga-details-info {
+    flex: 1;
+    margin-left: 1rem;
+    font-size: 0.9rem;
+
+    > p {
+      text-align: justify;
+    }
+
+    .ant-list-item {
+      font-size: 0.9rem;
+    }
+  }
+}
+
+.manga-chapter-wrapper {
+  background-color: #222;
+  align-items: center;
+  display: flex;
+  flex-flow: column nowrap;
+  overflow: auto;
+  width: 100%;
+
+  img {
+    height: auto;
+    max-width: 90vw;
+  }
+}
+
 .ant-tooltip-inner {
   font-size: 0.6em;
 }

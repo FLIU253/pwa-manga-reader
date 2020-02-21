@@ -7,6 +7,7 @@ const Manga = {
 
     return {
       chapters: res.data.chapters,
+      description: res.data.description,
       id: mangaObj.id
     };
   },
