@@ -6,7 +6,7 @@ import Search from "../../antd/Search";
 import { useState, useCallback } from "react";
 import _ from "lodash";
 import MangaDetails from "./MangaDetails";
-
+import FavoriteButton from "./FavoriteButton";
 const THROTTLE_TIME = 500;
 const MIN_QUERY_LENGTH = 3;
 
@@ -30,7 +30,6 @@ const query = gql`
 const Home = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedManga, setSelectedManga] = useState(null);
-
   const { data, loading } = useQuery(query, {
     skip: searchQuery.length < MIN_QUERY_LENGTH,
     variables: { searchTitle: searchQuery }
@@ -47,27 +46,30 @@ const Home = () => {
     !loading &&
     data &&
     data.mangas &&
-    data.mangas.map(manga => (
-      <AutoComplete.Option key={manga.id} value={manga.title}>
-        <span
-          className="home-search-option"
-          // to={`${manga.id}-${sanitiseTitle(manga.title)}`}
-          onClick={() => setSelectedManga(manga)}
-        >
-          <Tooltip title={manga.title} mouseEnterDelay={0.5} placement="topLeft">
-            <div className="home-search-option-title" title={manga.title}>
-              {manga.title}
-            </div>
-          </Tooltip>
-          <Tag
-            className="home-search-option-status"
-            color={STATUS_TO_COLOR[manga.status]}
+    data.mangas.map(manga => {
+      return (
+        <AutoComplete.Option key={manga.id} value={manga.title}>
+          <span
+            className="home-search-option"
+            // to={`${manga.id}-${sanitiseTitle(manga.title)}`}
+            onClick={() => setSelectedManga(manga)}
           >
-            {manga.status}
-          </Tag>
-        </span>
-      </AutoComplete.Option>
-    ));
+            <Tooltip title={manga.title} mouseEnterDelay={0.5} placement="topLeft">
+              <div className="home-search-option-title" title={manga.title}>
+                {manga.title}
+              </div>
+            </Tooltip>
+            <Tag
+              className="home-search-option-status"
+              color={STATUS_TO_COLOR[manga.status]}
+            >
+              {manga.status}
+            </Tag>
+            <FavoriteButton manga={manga} />
+          </span>
+        </AutoComplete.Option>
+      );
+    });
 
   return (
     <div className="main-search-container">

@@ -9,6 +9,7 @@ import "./global.less";
 import Home from "./pages/Home/Index";
 import Manga from "./pages/Manga";
 import MangaChapter from "./pages/MangaChapter";
+import { Provider as FavoritedMangaContextProvider } from "./contexts/FavoritedMangaContext";
 // if ("serviceWorker" in navigator) {
 //   navigator.serviceWorker.register("service-worker.js");
 // }
@@ -29,10 +30,12 @@ const App = () => {
 };
 
 render(
-  <ApolloProvider client={graphqlClient}>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
-  </ApolloProvider>,
+  <FavoritedMangaContextProvider>
+    <ApolloProvider client={graphqlClient}>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </ApolloProvider>
+  </FavoritedMangaContextProvider>,
   document.getElementById("app")
 );

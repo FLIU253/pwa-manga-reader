@@ -13,6 +13,7 @@
     "watch": "parcel src/index.html"
   },
   "dependencies": {
+    "@ant-design/icons": "^4.0.2",
     "@apollo/react-hooks": "^3.1.3",
     "@types/react": "^16.9.16",
     "antd": "^3.26.3",
@@ -23,6 +24,7 @@
     "graphql": "^14.5.8",
     "graphql-tag": "^2.10.1",
     "locutus": "^2.0.11",
+    "ramda": "^0.27.0",
     "react": "^16.12.0",
     "react-apollo": "^3.1.3",
     "react-dom": "^16.12.0",

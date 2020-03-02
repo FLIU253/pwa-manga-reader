@@ -31,7 +31,12 @@ const MangaDetails = ({ manga }) => {
     variables: { mangaId: manga.id }
   });
 
-  if (loading) return <Spin />;
+  if (loading)
+    return (
+      <div className="manga-details-spinner">
+        <Spin />
+      </div>
+    );
 
   return (
     <div className="manga-details-wrapper">
