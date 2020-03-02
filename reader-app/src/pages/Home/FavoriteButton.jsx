@@ -7,13 +7,17 @@ const FavoriteButton = ({ manga }) => {
   const { favoriteManga, unfavoriteManga, isMangaFavorited } = useContext(
     FavoritedMangaContext
   );
-  const IconComponent = isMangaFavorited(manga.id) ? StarFilled : StarOutlined;
+  const isFavorited = isMangaFavorited(manga.id);
+  const IconComponent = isFavorited ? StarFilled : StarOutlined;
 
   return (
     <IconComponent
       onClick={evt => {
         evt.stopPropagation();
         R.ifElse(isMangaFavorited, unfavoriteManga, favoriteManga)(manga.id);
+      }}
+      style={{
+        color: isFavorited ? "orange" : "inherit"
       }}
     />
   );
