@@ -6,7 +6,10 @@ const mangasResolvers = (context, args) => {
     return Manga.find({ title: new RegExp(args.searchTitle, "i") }).sort({
       hits: -1
     });
-  } else {
+  } else if (args.ids) {
+    return Manga.find({_id : {$in: args.ids } }).sort({ lastUpdated: -1 });
+  }
+  else {
     return Manga.find({}).sort({ lastUpdated: -1 });
   }
 };

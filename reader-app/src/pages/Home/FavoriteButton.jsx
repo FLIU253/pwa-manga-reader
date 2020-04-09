@@ -13,6 +13,7 @@ const FavoriteButton = ({ manga }) => {
   return (
     <IconComponent
       onClick={evt => {
+        evt.preventDefault();
         evt.stopPropagation();
         R.ifElse(isMangaFavorited, unfavoriteManga, favoriteManga)(manga.id);
       }}

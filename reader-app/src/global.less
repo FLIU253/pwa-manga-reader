@@ -61,11 +61,13 @@ body {
   max-width: 500px;
   width: 90vw;
 
-  > .manga-details-image {
+  > .manga-details-image-wrapper {
     flex: 0 auto;
-    max-width: 5rem;
-    max-height: 10rem;
-    object-fit: contain;
+
+    > .manga-details-image{
+      max-width: 5rem;
+      max-height: 10rem;
+    }
   }
 
   > .manga-details-info {
@@ -99,4 +101,17 @@ body {
 
 .ant-tooltip-inner {
   font-size: 0.6em;
+}
+
+.favorited-manga-wrapper {
+  margin-top: 1rem;
+}
+
+.favorited-manga-list-item{
+   display: flex;
+   flex-flow: row nowrap;
+   
+   &-tag{
+     margin-left: auto;
+   }
 }

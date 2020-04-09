@@ -7,6 +7,11 @@ import { useState, useCallback } from "react";
 import _ from "lodash";
 import MangaDetails from "./MangaDetails";
 import FavoriteButton from "./FavoriteButton";
+import FavoritedManga from './FavoritedManga';
+import {Link} from 'react-router-dom';
+import sanitiseTitle from '../../helpers/sanitiseTitle';
+
+
 const THROTTLE_TIME = 500;
 const MIN_QUERY_LENGTH = 3;
 
@@ -27,7 +32,7 @@ const query = gql`
   }
 `;
 
-const Home = () => {
+const Home = ({match}) => {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedManga, setSelectedManga] = useState(null);
   const { data, loading } = useQuery(query, {
@@ -49,10 +54,11 @@ const Home = () => {
     data.mangas.map(manga => {
       return (
         <AutoComplete.Option key={manga.id} value={manga.title}>
-          <span
+          <Link
             className="home-search-option"
             // to={`${manga.id}-${sanitiseTitle(manga.title)}`}
             onClick={() => setSelectedManga(manga)}
+            to={`/${manga.id}-${sanitiseTitle(manga.title)}`}
           >
             <Tooltip title={manga.title} mouseEnterDelay={0.5} placement="topLeft">
               <div className="home-search-option-title" title={manga.title}>
@@ -66,7 +72,7 @@ const Home = () => {
               {manga.status}
             </Tag>
             <FavoriteButton manga={manga} />
-          </span>
+          </Link>
         </AutoComplete.Option>
       );
     });
@@ -74,7 +80,9 @@ const Home = () => {
   return (
     <div className="main-search-container">
       <Search dataSource={dataSource} onChange={handleChange} />
-      {selectedManga && <MangaDetails manga={selectedManga} />}
+      {match?.params?.mangaId ? <MangaDetails mangaId={match?.params?.mangaId} /> : (
+        <FavoritedManga/>
+      )}
       {/* <pre>{JSON.stringify(data, null, 2)}</pre> */}
     </div>
   );

@@ -4,11 +4,13 @@ import gql from "graphql-tag";
 import { Spin, List } from "antd";
 import html_entity_decode from "locutus/php/strings/html_entity_decode";
 import { Link } from "react-router-dom";
+import sanitiseTitle from '../../helpers/sanitiseTitle';
 
 const query = gql`
   query($mangaId: ID!) {
     manga(id: $mangaId) {
       id
+      image
       info {
         description
         chapters {
@@ -16,19 +18,14 @@ const query = gql`
           title
         }
       }
+      title
     }
   }
 `;
 
-const sanitiseTitle = title =>
-  title
-    .toLowerCase()
-    .replace(/[^a-z0-9]/g, "-")
-    .replace(/-{2,}/g, "-");
-
-const MangaDetails = ({ manga }) => {
+const MangaDetails = ({ mangaId }) => {
   const { data, loading } = useQuery(query, {
-    variables: { mangaId: manga.id }
+    variables: { mangaId }
   });
 
   if (loading)
@@ -40,11 +37,12 @@ const MangaDetails = ({ manga }) => {
 
   return (
     <div className="manga-details-wrapper">
+      <div className= "manga-details-image-wrapper">
       <img
-        className="manga-details-image"
-        src={manga.image}
-        referrerPolicy="no-referrer"
-      />
+      className="manga-details-image"
+      src={data.manga.image}
+      referrerPolicy="no-referrer"
+      /></div>
       <div className="manga-details-info">
         <p> {html_entity_decode(data.manga.info.description)}</p>
         <List
@@ -53,7 +51,7 @@ const MangaDetails = ({ manga }) => {
           dataSource={data.manga.info.chapters}
           renderItem={(chapter, index) => (
             <List.Item>
-              <Link to={`/${manga.id}-${sanitiseTitle(manga.title)}/${chapter.id}`}>
+              <Link to={`/${mangaId}-${sanitiseTitle(data.manga.title)}/${chapter.id}`}>
                 #
                 {String(data.manga.info.chapters.length - index).padStart(
                   data.manga.info.chapters.length.toString().length,

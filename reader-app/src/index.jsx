@@ -7,7 +7,6 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import graphqlClient from "./api/graphql";
 import "./global.less";
 import Home from "./pages/Home/Index";
-import Manga from "./pages/Manga";
 import MangaChapter from "./pages/MangaChapter";
 import { Provider as FavoritedMangaContextProvider } from "./contexts/FavoritedMangaContext";
 // if ("serviceWorker" in navigator) {
@@ -22,7 +21,7 @@ const App = () => {
           component={MangaChapter}
           path="/:mangaId([a-z0-9]{24})-:mangaName([a-z0-9-]+)/:chapterId([a-z0-9]{24})"
         />
-        <Route component={Manga} path="/:mangaId([a-z0-9]{24})-:mangaName([a-z0-9-]+)" />
+        <Route component={Home} path="/:mangaId([a-z0-9]{24})-:mangaName([a-z0-9-]+)" />
         <Route component={Home} path="/" />
       </Switch>
     </div>

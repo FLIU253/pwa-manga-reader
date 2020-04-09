@@ -42,7 +42,7 @@ const typeDefs = gql`
   type Query {
     manga(id: ID!): Manga!
     chapter(id: ID!): Chapter!
-    mangas(searchTitle: String): [Manga!]!
+    mangas(ids: [ID!], searchTitle: String): [Manga!]!
   }
 `;
 
