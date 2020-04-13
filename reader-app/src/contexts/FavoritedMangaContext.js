@@ -14,11 +14,11 @@ export const Provider = ({ children }) => {
   const favoriteManga = mangaId => {
     return R.compose(
       setFavoritedManga,
-      R.ifElse(isMangaFavorited, R.identity, R.append(mangaId))
+      R.ifElse(R.includes(mangaId), R.identity, R.append(mangaId))
     )(favoritedManga);
   };
 
-  const unfavoriteManga = mangaId => {
+  const unfavoriteManga = mangaId => { 
     return R.compose(setFavoritedManga, R.reject(R.equals(mangaId)))(favoritedManga);
   };
 
