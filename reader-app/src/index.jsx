@@ -7,7 +7,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import graphqlClient from "./api/graphql";
 import "./global.less";
 import Home from "./pages/Home/Index";
-import MangaChapter from "./pages/MangaChapter";
+import MangaChapter from "./pages/MangaChapter/MangaChapter";
 import { Provider as FavoritedMangaContextProvider } from "./contexts/FavoritedMangaContext";
 // if ("serviceWorker" in navigator) {
 //   navigator.serviceWorker.register("service-worker.js");

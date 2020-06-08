@@ -45,7 +45,8 @@ body {
     margin-left: auto;
   }
 }
-.manga-chapter-spinner{
+
+.manga-chapter-spinner {
   align-items: center;
   display: flex;
   width: 100%;
@@ -72,7 +73,7 @@ body {
   > .manga-details-image-wrapper {
     flex: 0 auto;
 
-    > .manga-details-image{
+    > .manga-details-image {
       max-width: 5rem;
       max-height: 10rem;
     }
@@ -107,19 +108,55 @@ body {
   }
 }
 
-.ant-tooltip-inner {
-  font-size: 0.6em;
-}
-
 .favorited-manga-wrapper {
   margin-top: 1rem;
 }
 
-.favorited-manga-list-item{
-   display: flex;
-   flex-flow: row nowrap;
-   
-   &-tag{
-     margin-left: auto;
-   }
+.favorited-manga-list-item {
+  display: flex;
+  flex-flow: row nowrap;
+
+  &-tag {
+    margin-left: auto;
+  }
+}
+
+.next-chapter-screen {
+  background-color: #111111;
+  box-sizing: border-box;
+  display: flex;
+  flex-flow: column nowrap;
+  height: 90vh;
+  padding: 2rem 0;
+  transition: background-color 0.5s;
+  width: 90vw;
+
+  &.-keep-scrolling {
+    background-color: #333333;
+  }
+
+  &.-almost-there {
+    background-color: #555555;
+  }
+
+  &.-start-redirect {
+    background-color: #098600;
+
+    .next-chapter-screen-label {
+      color: white;
+    }
+  }
+}
+
+.next-chapter-screen-label {
+  text-align: center;
+  font-size: 36px;
+  color: #aaaaaa;
+  margin: 0 auto;
+  transition: color 0.25s;
+}
+
+//Hacks
+.ant-tooltip-inner {
+  font-size: 0.6em;
 }
